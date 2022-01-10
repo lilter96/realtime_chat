@@ -20,6 +20,7 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddSingleton<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<IRoomRepository, RoomRepository>();
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
@@ -31,14 +32,16 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.MapControllers();
 
 app.UseCors("ClientPermission");
 
 app.UseRouting();
 
+app.UseAuthorization();
+
 app.UseEndpoints(endpoints => endpoints.MapHub<ChatHub>("/hubs/chat"));
+
+app.MapHealthChecks("/healthz");
 
 app.Run();
