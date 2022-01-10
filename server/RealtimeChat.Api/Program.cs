@@ -42,6 +42,6 @@ app.UseAuthorization();
 
 app.UseEndpoints(endpoints => endpoints.MapHub<ChatHub>("/hubs/chat"));
 
-app.MapHealthChecks("/healthz");
+app.MapHealthChecks("/");
 
 app.Run();
