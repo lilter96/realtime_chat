@@ -14,7 +14,7 @@ builder.Services.AddCors(options =>
     {
         policy.AllowAnyHeader()
             .AllowAnyMethod()
-            .WithOrigins("http://livechat-frontend-env-dev.azurewebsites.net")
+            .WithOrigins("https://livechat-frontend-env-dev.azurewebsites.net")
             .AllowCredentials();
     });
 });
