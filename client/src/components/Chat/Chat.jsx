@@ -9,7 +9,8 @@ import Messages from '../Messages/Messages.jsx';
 import Input from '../Input/Input';
 import TextContainer from '../TextContainer/TextContainer';
 
-const ENDPOINT = 'https://localhost:5001/hubs/chat';
+const SERVER_ENDPOINT = 'https://livechat-backend-env-dev.azurewebsites.net';
+const ENDPOINT = `${SERVER_ENDPOINT}/hubs/chat`;
 
 const Chat = () => {
     const location = useLocation();
@@ -64,7 +65,7 @@ const Chat = () => {
         }
         
         try {
-            await fetch("https://localhost:5001/chat/room/join", {
+            await fetch(`${SERVER_ENDPOINT}/chat/room/join`, {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -88,7 +89,7 @@ const Chat = () => {
         }
         
         try {
-            fetch("https://localhost:5001/chat/room/leave", {
+            fetch(`${SERVER_ENDPOINT}/chat/room/leave`, {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -111,7 +112,7 @@ const Chat = () => {
         }
 
         try {
-            await fetch("https://localhost:5001/chat/message", {
+            await fetch(`${SERVER_ENDPOINT}/chat/message`, {
                 method: "POST",
                 body: JSON.stringify(chatMessage),
                 headers: {
